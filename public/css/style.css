@@ -1,0 +1,1434 @@
+@font-face {
+    font-family: 'Poppins Regular';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Poppins Regular'), url('../fonts/Poppins-Regular.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins Medium';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Poppins Medium'), url('../fonts/Poppins-Medium.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins SemiBold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Poppins SemiBold'), url('../fonts/Poppins-SemiBold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'Poppins Bold';
+    font-style: normal;
+    font-weight: normal;
+    src: local('Poppins Bold'), url('../fonts/Poppins-Bold.woff') format('woff');
+}
+
+@font-face {
+    font-family: 'icomoon';
+    src: url('../fonts/icomoon.eot?tmk6vw');
+    src: url('../fonts/icomoon.eot?tmk6vw#iefix') format('embedded-opentype'),
+        url('../fonts/icomoon.ttf?tmk6vw') format('truetype'),
+        url('../fonts/icomoon.woff?tmk6vw') format('woff'),
+        url('../fonts/icomoon.svg?tmk6vw#icomoon') format('svg');
+    font-weight: normal;
+    font-style: normal;
+    font-display: block;
+}
+
+[class^="icon-"],
+[class*=" icon-"] {
+    /* use !important to prevent issues with browser extensions that change fonts */
+    font-family: 'icomoon' !important;
+    speak: never;
+    font-style: normal;
+    font-weight: normal;
+    font-variant: normal;
+    text-transform: none;
+    line-height: 1;
+
+    /* Better Font Rendering =========== */
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+.icon-shopping-mall-b:before {
+    content: "\e910";
+    color: #2648f1;
+}
+
+.icon-password-b:before {
+    content: "\e90d";
+    color: #2648f1;
+}
+
+.icon-password-slash-b:before {
+    content: "\e907";
+    color: #2648f1;
+}
+
+.icon-circuit-b:before {
+    content: "\e908";
+    color: #2648f1;
+}
+
+.icon-close-b:before {
+    content: "\e909";
+}
+
+.icon-copy-w:before {
+    content: "\e90a";
+    color: #fff;
+}
+
+.icon-email-b:before {
+    content: "\e90b";
+    color: #2648f1;
+}
+
+.icon-toggle-w:before {
+    content: "\e90c";
+    color: #fff;
+}
+
+.icon-delete:before {
+    content: "\e900";
+}
+
+.icon-edit:before {
+    content: "\e901";
+}
+
+.icon-view:before {
+    content: "\e902";
+}
+
+.icon-left-arrow-w:before {
+    content: "\e903";
+}
+
+.icon-right-arrow-w:before {
+    content: "\e904";
+}
+
+.icon-search-b:before {
+    content: "\e905";
+}
+
+.icon-sort-b:before {
+    content: "\e906";
+}
+
+.icon-add:before {
+    content: "\002B";
+}
+
+
+
+
+body {
+    margin: 0;
+    padding: 0;
+    color: #172542;
+    background: #F6F8FF;
+    font-family: 'Poppins Regular';
+}
+
+a {
+    text-decoration: none;
+}
+
+.bg-dark {
+    background: #172542 !important;
+}
+
+.btn.btn-outline-primary {
+    border-color: #2648F1;
+    color: #2648F1;
+}
+
+.btn.btn-outline-primary:hover,
+.btn.btn-outline-primary:active {
+    color: #fff;
+    background: #2648F1;
+}
+
+.btn-dark {
+    background: #172542;
+    border-color: #172542;
+    border-radius: 6px;
+}
+
+.btn-danger {
+    background: #FF585E;
+    border-color: #FF585E;
+    border-radius: 6px;
+}
+
+.btn-outline-success {
+    border-color: #11B47F;
+    color: #11B47F;
+}
+
+.btn-outline-success:hover,
+.btn-outline-success:active {
+    background: #11B47F;
+    border-color: #11B47F;
+}
+
+.btn-success {
+    background: #11B47F;
+    border-color: #11B47F;
+    border-radius: 6px;
+}
+
+.btn-outline-primary {
+    font-size: 16px;
+    text-transform: uppercase;
+    font-family: 'Poppins Medium';
+    padding: 8px 15px;
+}
+
+.btn-primary {
+    background-color: #2648F1;
+    font-family: 'Poppins Medium';
+    border-color: #2648F1;
+    text-transform: uppercase;
+    padding: 8px 15px;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: #d1d1d1 #ffffff;
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 13px;
+}
+
+*::-webkit-scrollbar-track {
+    background: #ffffff;
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: #d1d1d1;
+    border-radius: 10px;
+    border: 3px solid #ffffff;
+}
+
+/*welcome screens css start*/
+.welcome-screen {
+    background: #F6F8FF;
+    height: 100vh;
+}
+
+.left-logo-bg:after {
+    content: '';
+    background-image: url(../images/circle-line-bg.svg);
+    background-size: cover;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -3;
+    opacity: 0.7;
+}
+
+.left-logo-bg {
+    background: #2648F1;
+    background-position: center;
+    background-repeat: no-repeat;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: calc(100vh - 0px);
+    position: relative;
+    z-index: 0;
+}
+
+.right-form-content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    height: calc(100vh - 0px);
+    background: #F6F8FF;
+}
+
+.form-center {
+    padding: 60px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 5px 25px #0000000D;
+    border-radius: 19px;
+    width: 670px;
+}
+
+.form-title {
+    font-family: 'Poppins Bold';
+    font-size: 50px;
+}
+
+.form-sub-title {
+    font-family: 'Poppins Medium';
+    font-size: 18px;
+}
+
+.form-select,
+.form-control {
+    border-radius: 8px !important;
+}
+
+.input-group .form-control {
+    border-top-right-radius: 0 !important;
+    border-bottom-right-radius: 0 !important;
+    border-right: none;
+}
+
+.basic-form {
+    margin-top: 42px;
+}
+
+form .form-control,
+form .input-group-text {
+    border: 2px solid #D0D3D9;
+    outline: none;
+}
+
+form .input-group {
+    margin-bottom: 26px;
+}
+
+form .input-group-text {
+    background: #fff;
+    border-left: none;
+    padding: 15px 20px;
+}
+
+form .form-control {
+    padding: 16px 20px;
+    font-size: 18px;
+    font-family: 'Poppins Medium';
+}
+
+form .form-control:focus+.input-group-text,
+form .form-control:focus {
+    border-color: #2648f1;
+    box-shadow: none;
+}
+
+form .form-label {
+    font-family: 'Poppins SemiBold';
+    font-size: 18px;
+}
+
+form .btn {
+    text-transform: uppercase;
+    font-family: 'Poppins SemiBold';
+    letter-spacing: 1px;
+    padding: 12px 20px;
+    width: 100%;
+}
+
+.alert-danger {
+    background: #FF585E;
+}
+
+.alert-success {
+    background: #11B47F;
+}
+
+.alert {
+    color: #fff;
+    border: none;
+    padding: 15px 20px;
+    margin: 40px 0 0;
+    display: flex;
+    align-items: center;
+}
+
+.alert button {
+    border: none;
+    background: transparent;
+    margin: 0 0 0 20px;
+    padding: 0;
+}
+
+/*welcome screens css end*/
+
+/*dashboard css start*/
+.side-navbar {
+    width: 400px;
+    height: 100%;
+    position: fixed;
+    margin-left: -400px;
+    background-color: #100901;
+    transition: 0.5s;
+    z-index: 11;
+}
+
+.side-navbar .nav-brand {
+    padding: 50px;
+    width: 100%;
+    margin: 0 auto;
+}
+
+.side-navbar .nav li {
+    width: 100%;
+}
+
+.side-navbar .nav li .active,
+.side-navbar .nav li:hover a {
+    background: transparent linear-gradient(90deg, #FFFFFF21 0%, #FFFFFF00 100%) 0% 0% no-repeat padding-box;
+    color: #fff;
+}
+
+.side-navbar .nav li .active,
+.side-navbar .nav li a {
+    padding: 20px 30px;
+}
+
+.side-navbar .nav li a {
+    font-size: 20px;
+    font-family: 'Poppins Medium';
+}
+
+.side-navbar .nav li a span {
+    padding-left: 15px;
+    vertical-align: middle;
+}
+
+.my-container {
+    transition: 0.4s;
+    padding: 45px;
+}
+
+.active-nav {
+    margin-left: 0;
+}
+
+.active-cont {
+    margin-left: 400px;
+}
+
+#menu-btn {
+    background-color: #172542;
+    border-radius: 0 5px 5px 0;
+    color: #fff;
+    margin-left: 0;
+    right: -40px;
+    position: absolute;
+}
+
+#menu-btn i {
+    vertical-align: middle;
+    font-size: 18px;
+}
+
+/*datatable css start*/
+.action-btn {
+    padding: 8px;
+    margin: 2px;
+}
+
+.action-btn i {
+    font-size: 20px;
+    vertical-align: middle;
+}
+
+.table {
+    padding-top: 30px;
+}
+
+.table thead tr th {
+    padding: 20px 20px !important;
+    color: #172542;
+    text-transform: uppercase;
+    font-size: 18px;
+    font-family: 'Poppins SemiBold';
+    background-color: #fff;
+}
+
+.table tbody tr td {
+    padding: 15px 20px !important;
+    vertical-align: middle;
+    color: #365569;
+    background-color: #fff;
+}
+
+.table thead tr th:last-child {
+    border-radius: 0 15px 0 0;
+}
+
+.table thead tr th:first-child {
+    border-radius: 15px 0 0 0;
+}
+
+.dataTables_info {
+    display: none;
+}
+
+.dataTables_wrapper .dataTables_paginate {
+    float: none;
+    text-align: center;
+    background: #fff;
+    border-radius: 0 0 15px 15px;
+    padding: 15px;
+}
+
+table.dataTable.no-footer {
+    border-bottom: 1px solid #F0F1F4;
+}
+
+table.dataTable thead th,
+table.dataTable thead td {
+    border-bottom: 1px solid #F0F1F4;
+}
+
+table.dataTable.row-border tbody tr:first-child th,
+table.dataTable.row-border tbody tr:first-child td,
+table.dataTable.display tbody tr:first-child th,
+table.dataTable.display tbody tr:first-child td,
+table.dataTable.stripe>tbody>tr.odd>*,
+table.dataTable.display>tbody>tr.odd>*,
+table.dataTable.display tbody tr:hover>.sorting_1,
+table.dataTable.order-column.hover tbody tr:hover>.sorting_1,
+table.dataTable.hover>tbody>tr:hover>*,
+table.dataTable.display>tbody>tr:hover>*,
+table.dataTable.display>tbody>tr.even>.sorting_1,
+table.dataTable.order-column.stripe>tbody>tr.even>.sorting_1 {
+    box-shadow: none !important;
+}
+
+table.dataTable.row-border tbody th,
+table.dataTable.row-border tbody td,
+table.dataTable.display tbody th,
+table.dataTable.display tbody td {
+    border-top: none;
+}
+
+/*pagination css start*/
+.dataTables_wrapper .dataTables_paginate .paginate_button {
+    min-height: auto;
+    line-height: normal;
+    border-radius: 6px;
+    background: #fff;
+    border: 1px solid #2648F1;
+    padding: 0;
+    color: #2648F1 !important;
+    margin: 5px;
+    width: 40px;
+    height: 40px;
+    vertical-align: middle;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.disabled:active {
+    cursor: default;
+    color: #fff !important;
+    border: 1px solid transparent;
+    background: #2648f16b;
+    box-shadow: none;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.current {
+    background: #2648F1;
+    color: #fff !important;
+    padding: 5px 15px !important;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button:hover,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current,
+.dataTables_wrapper .dataTables_paginate .paginate_button.current:hover {
+    background: #2648f1;
+    border-color: #2648f1;
+    color: #fff;
+    color: #fff !important;
+    box-shadow: none;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.next,
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous {
+    padding: 9.5px 8.5px;
+    font-size: 0;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.next:after,
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous:before {
+    content: '\e904';
+    font-family: 'icomoon';
+    visibility: visible;
+    font-size: 16px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous:before {
+    content: '\e903';
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.previous {
+    margin-right: 20px;
+}
+
+.dataTables_wrapper .dataTables_paginate .paginate_button.next {
+    margin-left: 20px;
+}
+
+.dataTables_wrapper .dataTables_filter input {
+    border-color: #8B92A0;
+    border-radius: 6px;
+    padding: 10px 15px;
+    font-family: 'Poppins Medium';
+    font-size: 16px;
+    background: #fff;
+    color: #172542;
+}
+
+.dataTables_wrapper .dataTables_length label {
+    display: inline-flex;
+    align-items: center;
+    text-transform: capitalize;
+    column-gap: 10px;
+    font-family: 'Poppins SemiBold';
+}
+
+.dataTables_wrapper .dataTables_length select {
+    order: 1;
+}
+
+/*pagination css end*/
+/*datatable css end*/
+
+/*modal popup css start*/
+.modal-body,
+.modal-header,
+.modal-footer {
+    padding: 30px;
+}
+
+.modal-header,
+.modal-footer {
+    padding: 15px 30px;
+}
+
+.modal-header .modal-title {
+    font-size: 28px;
+    font-family: 'Poppins SemiBold';
+}
+
+.modal-header button {
+    background: transparent;
+    border: none;
+    padding: 0;
+}
+
+.modal-footer button {
+    padding: 8px 35px;
+    border-width: 2px;
+    font-size: 14px;
+}
+
+/*modal popup css end*/
+/*addshoppingmall modal popup css start*/
+.addshoppingmall .modal-dialog {
+    max-width: 600px;
+}
+
+.addshoppingmall .modal-body .add-shoppingmall-form {
+    margin-top: 0;
+}
+
+.add-shoppingmall-form .btn.add-lat-long {
+    background: #F6F8FF;
+    border-color: #D0D3D9;
+    color: #172542;
+    border-radius: 8px !important;
+    padding: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 10px 15px;
+    text-transform: capitalize;
+    letter-spacing: 0.5px;
+}
+
+.add-shoppingmall-form .btn.add-lat-long:active {
+    background: #F6F8FF;
+    border-color: #D0D3D9;
+    color: #172542;
+}
+
+.add-shoppingmall-form .input-group {
+    margin: 0;
+}
+
+.add-shoppingmall-form .input-group .input-group-text {
+    border-radius: 8px;
+    border-top-right-radius: 0.375rem !important;
+    border-bottom-right-radius: 0.375rem !important;
+}
+
+/*addshoppingmall modal popup css end*/
+/*addlatlong modal popup css start*/
+.addlatlong .modal-dialog {
+    max-width: 90%;
+}
+
+.addlatlong iframe {
+    height: 490px;
+}
+
+.map-filter .card-header {
+    padding: 10px;
+    background: #fff;
+}
+
+.map-filter .card-header .btn {
+    margin: 5px;
+    float: left;
+}
+
+.map-filter .card-body {
+    overflow-y: auto;
+    min-height: 510px;
+    max-height: 510px;
+}
+
+.lat-long-list {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+.lat-long-list li {
+    padding-bottom: 5px;
+}
+
+.lat-long-list li a {
+    color: #172542;
+}
+
+/*addlatlong modal popup css end*/
+/*add circuit modal popup css start*/
+.addcircuitnumber .modal-dialog,
+.editcircuitnumber .modal-dialog {
+    max-width: 640px;
+}
+
+.add-circuitnumber-form.basic-form {
+    margin-top: 0;
+}
+
+.addcircuitnumber .modal-dialog .modal-body,
+.editcircuitnumber .modal-dialog .modal-body {
+    padding: 0;
+}
+
+.add-circuitnumber-form .stripe {
+    background: #F8F8F9;
+    padding: 30px;
+    margin-bottom: 20px;
+}
+
+.add-circuitnumber-form .btn.action-btn {
+    margin: 35px 0 0px 20px;
+    width: auto;
+    padding: 12px;
+}
+
+.add-circuitnumber-form .input-group {
+    margin: 0;
+    display: inline-flex;
+}
+
+.stripe .action-btn i {
+    font-size: 20px;
+}
+
+/*add circuit modal popup css end*/
+/*edit circuit modal popup css start*/
+/*.add-circuitnumber-form .btn.btn-success {
+    width: auto;
+    padding: 10px;
+    border-radius: 10px;
+    font-size: 10px;
+}*/
+.topview-shoppingmall-info {
+    padding: 14px 25px;
+}
+
+.topview-shoppingmall-info .badge {
+    padding: 10px;
+    border: 1px solid #D0D3D9;
+    background: #F6F8FF;
+    color: #172542;
+}
+
+.topview-shoppingmall-info .btn {
+    width: auto;
+    padding: 8px 8px;
+    border-radius: 7px !important;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+/*edit circuit modal popup css end*/
+/*delete circuit modal popup css start*/
+.deletecircuit .modal-footer button {
+    padding: 8px 60px;
+    text-transform: uppercase;
+    border-width: 2px;
+}
+
+.deletecircuit .modal-body p {
+    font-family: 'Poppins SemiBold';
+    font-size: 20px;
+    margin-top: 20px;
+}
+
+.deletecircuit .modal-body {
+    text-align: center;
+}
+
+/*delete circuit modal popup css end*/
+/*circuitcode modal popup css start*/
+.circuitcode .modal-dialog {
+    max-width: 700px;
+}
+
+.copytext {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    z-index: 11;
+}
+
+.circuitcode-box .text-group {
+    position: relative;
+}
+
+textarea.form-control {
+    padding: 15px 15px;
+    font-size: 14px;
+    font-family: 'Poppins Medium';
+    border-radius: 10px !important;
+}
+
+/*circuitcode modal popup css end*/
+
+@media only screen and (max-width: 1680px) {
+    .side-navbar .nav li a {
+        font-size: 16px;
+    }
+
+    .side-navbar .nav li a img {
+        width: 20px;
+    }
+
+    .side-navbar .nav li a span {
+        padding-left: 10px;
+    }
+
+    .modal-body,
+    .modal-header,
+    .modal-footer {
+        padding: 25px;
+    }
+
+    .modal-header,
+    .modal-footer {
+        padding: 10px 25px;
+    }
+
+    .modal-header .modal-title {
+        font-size: 16px;
+    }
+
+    .modal-header button img {
+        width: 35px;
+    }
+
+    form .form-control {
+        padding: 10px 15px;
+        font-size: 16px;
+    }
+
+    .map-filter .card-header .btn {
+        font-size: 12px;
+        padding: 5px 10px;
+    }
+
+    .addlatlong iframe {
+        height: 370px;
+    }
+
+    .map-filter .card-body {
+        overflow-y: auto;
+        min-height: 390px;
+        max-height: 390px;
+    }
+
+    .table thead tr th,
+    .table tbody tr td {
+        font-size: 14px;
+    }
+
+    .table tbody tr td .btn-outline-primary {
+        font-size: 12px;
+        padding: 6px 10px;
+    }
+
+    .action-btn i {
+        font-size: 14px;
+    }
+
+    .action-btn {
+        padding: 5px 8px;
+    }
+
+    .left-logo-bg img {
+        width: 200px;
+    }
+
+    .alert {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .alert button img {
+        width: 25px;
+    }
+
+    .form-title {
+        font-size: 25px;
+    }
+
+    form .input-group {
+        margin-bottom: 15px;
+    }
+
+    .form-center {
+        padding: 30px;
+        width: 500px;
+    }
+
+    form .input-group-text,
+    form .form-control {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .addcircuitnumber .modal-dialog,
+    .editcircuitnumber .modal-dialog {
+        max-width: 500px;
+    }
+}
+
+@media only screen and (max-width: 1440px) {
+    .form-center {
+        padding: 50px;
+        width: 550px;
+    }
+
+    .map-filter .card-header .btn {
+        font-size: 14px;
+    }
+
+    .map-filter .card-body {
+        min-height: 520px;
+        max-height: 520px;
+    }
+}
+
+@media only screen and (max-width: 1366px) {
+    .left-logo-bg img {
+        width: 200px;
+    }
+
+    .alert {
+        padding: 8px 15px;
+        font-size: 14px;
+    }
+
+    .alert button img {
+        width: 25px;
+    }
+
+    .form-title {
+        font-size: 25px;
+    }
+
+    form .input-group {
+        margin-bottom: 15px;
+    }
+
+    .form-center {
+        padding: 30px;
+        width: 500px;
+    }
+
+    .side-navbar {
+        width: 280px;
+    }
+
+    .active-cont {
+        margin-left: 280px;
+    }
+
+    .side-navbar .nav li a,
+    .dataTables_wrapper .dataTables_filter input {
+        font-size: 16px;
+    }
+
+    .side-navbar .nav li a img {
+        width: 25px;
+    }
+
+    .side-navbar .nav li a span {
+        padding-left: 10px;
+    }
+
+    .table thead tr th {
+        font-size: 14px;
+        padding: 15px 20px !important;
+    }
+
+    .table tbody tr td {
+        padding: 10px 20px !important;
+        font-size: 14px;
+    }
+
+    .btn-outline-primary {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+    .action-btn i {
+        font-size: 14px;
+    }
+
+    .action-btn {
+        padding: 5px 8px;
+    }
+
+    .map-filter .card-header .btn {
+        font-size: 10px;
+        padding: 6px 10px;
+    }
+
+    .modal-header .modal-title {
+        font-size: 18px;
+    }
+
+    .modal-header,
+    .modal-footer {
+        padding: 10px 20px;
+    }
+
+    .modal-body {
+        padding: 20px;
+    }
+
+    .modal-header button img {
+        width: 30px;
+    }
+
+    .addlatlong .modal-dialog {
+        max-width: 90%;
+    }
+
+    .addlatlong iframe {
+        height: 440px;
+    }
+
+    .basic-form {
+        margin-top: 20px;
+    }
+
+    .form-sub-title {
+        font-size: 14px;
+    }
+
+    form .input-group-text,
+    form .form-control {
+        padding: 10px 12px;
+        font-size: 14px;
+    }
+
+    .add-shoppingmall-form .btn.add-lat-long img {
+        width: 30px;
+    }
+
+    form .form-label {
+        font-size: 14px;
+    }
+
+    .map-filter .card-body {
+        min-height: 460px;
+        max-height: 460px;
+    }
+
+    .lat-long-list li a {
+        font-size: 14px;
+    }
+
+    .addcircuitnumber .modal-dialog,
+    .editcircuitnumber .modal-dialog {
+        max-width: 500px;
+    }
+}
+
+@media only screen and (max-width: 1280px) {}
+
+@media only screen and (max-width: 1199px) {
+    .form-center {
+        padding: 30px;
+        width: 400px;
+    }
+
+    .form-title {
+        font-size: 32px;
+    }
+
+    .form-sub-title,
+    form .form-label,
+    form .form-control {
+        font-size: 16px;
+    }
+
+    form .input-group-text,
+    form .form-control {
+        padding: 10px 15px;
+    }
+
+    form button.btn {
+        padding: 15px;
+    }
+
+    .left-logo-bg img {
+        width: 50%;
+    }
+
+    .active-cont {
+        margin-left: 0;
+    }
+
+    .side-navbar {
+        margin-left: 0;
+    }
+
+    .active-nav {
+        margin-left: -280px;
+    }
+
+    .addlatlong .modal-dialog {
+        max-width: 90%;
+    }
+
+    .map-filter .card-body {
+        min-height: 410px;
+        max-height: 410px;
+    }
+
+    .addcircuitnumber .modal-dialog {
+        max-width: 580px;
+    }
+
+    .modal-header .modal-title {
+        font-size: 16px;
+    }
+}
+
+@media only screen and (max-width: 991px) {
+    .left-logo-bg {
+        height: auto;
+        padding: 10%;
+    }
+
+    .left-logo-bg img {
+        max-width: 220px;
+    }
+
+    .right-form-content {
+        height: auto;
+        padding: 10%;
+    }
+
+    .active-cont {
+        margin-left: 0;
+    }
+
+    .map-filter {
+        margin-top: 30px;
+    }
+
+    .modal-header .modal-title {
+        font-size: 18px;
+    }
+
+    .modal-header,
+    .modal-footer {
+        padding: 15px 20px;
+    }
+
+    .modal-header button img {
+        width: 35px;
+    }
+
+    .addlatlong iframe {
+        height: 300px;
+    }
+
+    .map-filter .card-body {
+        min-height: 270px;
+        max-height: 270px;
+    }
+
+    .table tbody tr td {
+        padding: 7px 5px !important;
+        text-align: center;
+    }
+
+    .my-container {
+        padding: 30px;
+    }
+
+    .table thead tr th {
+        font-size: 12px;
+        padding: 12px 15px !important;
+        text-align: center;
+    }
+}
+
+@media only screen and (max-width: 575px) {
+    form button.btn {
+        padding: 10px 15px;
+    }
+
+    .left-logo-bg img {
+        max-width: 150px;
+    }
+
+    .left-logo-bg {
+        height: auto;
+        padding: 40px;
+    }
+
+    .right-form-content {
+        height: auto;
+        padding: 20px;
+    }
+
+    .form-center {
+        padding: 20px;
+        width: 100%;
+    }
+
+    .basic-form {
+        margin-top: 30px;
+    }
+
+    .form-title {
+        font-size: 25px;
+    }
+
+
+    .my-container {
+        padding: 20px;
+    }
+
+    .side-navbar .nav-brand {
+        padding: 30px;
+    }
+
+    .side-navbar {
+        width: 90%;
+        height: 100vh;
+        position: fixed;
+        z-index: 11;
+    }
+
+    .active-nav {
+        margin-left: -90%;
+    }
+
+    .active-cont {
+        margin-left: 0;
+    }
+
+    .addlatlong .modal-dialog {
+        max-width: 90%;
+        margin: 10px auto;
+    }
+
+    .modal-body,
+    .modal-header,
+    .modal-footer {
+        padding: 20px;
+    }
+
+    .modal-header {
+        padding: 10px 20px;
+    }
+
+    .add-shoppingmall-form .btn.add-lat-long {
+        text-align: left;
+        font-size: 14px;
+        padding: 5px 15px;
+    }
+
+    .add-shoppingmall-form .btn.add-lat-long img {
+        width: 30px;
+    }
+
+    form .form-control {
+        font-size: 14px;
+    }
+
+    .modal-footer button {
+        font-size: 14px;
+    }
+
+    .modal-footer button {
+        padding: 8px 30px;
+        font-size: 12px;
+    }
+
+    .deletecircuit .modal-body p {
+        font-size: 16px;
+    }
+
+    .deletecircuit .modal-body img {
+        width: 70%;
+    }
+
+    .addlatlong iframe {
+        height: 170px;
+    }
+
+    .map-filter {
+        margin-top: 10px;
+    }
+
+    .map-filter .card-body {
+        min-height: 190px;
+        max-height: 190px;
+    }
+
+    .modal-header .modal-title {
+        font-size: 14px;
+    }
+
+    .modal-header button img {
+        width: 25px;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+        padding: 8px 15px;
+        font-size: 14px;
+        width: 100%;
+    }
+
+    .dataTables_wrapper .dataTables_length,
+    .dataTables_wrapper .dataTables_filter {
+        width: 50%;
+        display: inline-block;
+        text-align: left;
+    }
+
+    .table {
+        padding-top: 20px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.next {
+        margin-left: 10px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.previous {
+        margin-right: 10px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate .paginate_button.next:after,
+    .dataTables_wrapper .dataTables_paginate .paginate_button.previous:before {
+        font-size: 12px;
+    }
+
+    .dataTables_wrapper .dataTables_paginate {
+        padding: 8px 15px;
+        margin: 0;
+    }
+
+    .table tbody tr td:first-child {
+        padding-left: 35px !important;
+    }
+
+    .table thead tr th {
+        text-align: left;
+    }
+
+    .table tbody tr td {
+        padding: 5px 15px !important;
+        text-align: left;
+    }
+
+    table.dataTable>tbody>tr.child span.dtr-title {
+        text-transform: uppercase;
+        font-size: 12px;
+        font-family: 'Poppins SemiBold';
+    }
+
+    table.dataTable>tbody>tr.child ul.dtr-details {
+        width: 100%;
+    }
+
+    table.dataTable>tbody>tr.child ul.dtr-details>li {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    table.dataTable.dtr-inline.collapsed>tbody>tr>td.dtr-control:before,
+    table.dataTable.dtr-inline.collapsed>tbody>tr>th.dtr-control:before {
+        left: 10px;
+    }
+
+    .dataTables_wrapper .dataTables_length label {
+        font-size: 12px;
+        column-gap: 5px;
+    }
+
+    .form-sub-title,
+    form .form-label,
+    form .form-control {
+        font-size: 14px;
+    }
+}
+
+@media only screen and (max-width: 320px) {
+    .deletecircuit .modal-footer button {
+        padding: 8px 45px;
+    }
+}
+
+.btn.add-circuit {
+    width: auto;
+    padding: 5px;
+    margin-left: 20px !important;
+    border-radius: 5px !important;
+}
