@@ -3,11 +3,14 @@
 namespace App\Http\Controllers;
 
 use App\Models\Employee;
+use App\Models\Hobbies;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Storage;
 use DataTables;
 use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Validator;
+
 
 class EmployeeController extends Controller
 {
@@ -89,23 +92,37 @@ class EmployeeController extends Controller
 	{
 		$title = __('ADD Employee');
         $emp = null;
+        $hobbies = Hobbies::pluck('name','id');
         if (!empty($id)) {
             $title = __('EDIT Employee');
             $emp = Employee::find($id);
 		}
-        $view = view('empModel', compact('emp', 'id','title'))->render();
+        $view = view('empModel', compact('emp', 'id','title','hobbies'))->render();
         $response['emp'] = $emp;
         // dd($response['emp']);
         $response['view'] = $view;
 		return response()->json($response);
 	}
 
+    function validate_email(Request $request) {
+        if ($request->input('email') !== '') {
+            if ($request->input('email')) {
+                $rule = array('email' => 'Required|email|unique:employees');
+                $validator = Validator::make($request->all(), $rule);
+            }
+            if (!$validator->fails()) {
+                die('true');
+            }
+        }
+        die('false');
+    }
+
 	public function store(Request $request, $id = null)
     {
 		$request->validate([    
 			'fname' => 'required|max:255',
 			'lname' => 'required|max:255',
-			'email' => 'required|email',
+			'email' => 'required|email|unique:employees',
 			'gender' => 'required',
 			'designation' => 'required|max:255',
 			'hobbies' => 'required',
@@ -113,22 +130,21 @@ class EmployeeController extends Controller
             ]);
 		
 		$response = false;
-		$data = [
+		
+        $data = [
 			'first_name' => $request->fname,
 			'last_name' => $request->lname,
 			'email' => $request->email,
 			'gender' => $request->gender,
 			'designation' => $request->designation,
-			'hobbies' => $request->hobbies,
+			'hobbies' => implode(',' ,$request->hobbies),
             'user_role' => $request->user_role,
         ];
-        // dd($data);die;
         if($id!=""){
             $employee = Employee::find($id);
         }else{
             $employee = new  Employee();
         }
-        // \DB::enableQueryLog();
         $employee->first_name  = $request->fname;
         $employee->last_name  = $request->lname;
         $employee->email  = $request->email;

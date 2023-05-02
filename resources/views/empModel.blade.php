@@ -27,7 +27,6 @@
             <span class="text-danger"></span>
           </div>
           <div class="my-2">
-
                 <label for="gender">{{ __('pages.emp.gender')  }}</label>
                 <input class="form-check-input gender" type="radio" name="gender"  id = "gender" value="male" {{ (isset($emp->gender) && $emp->gender == 'male') ? 'checked' : '' }}>
                 <label class="form-check-label" for="male">Male</label>
@@ -43,15 +42,13 @@
           </div>
           <div class="my-2">
             <label for="hobbies">Hobbies:</label>
-            <br>
-                      <input type="checkbox" class="hobbies" id="hobbies1" name="hobbies[]" value="Cricket" {{ (isset($emp->hobbies) && in_array('Cricket', $emp->hobbies)) ? 'checked' : '' }}>
-                      <label for="hobbies1"> Cricket</label><br>
-                      <input type="checkbox" class="hobbies" id="hobbies2" name="hobbies[]" value="Reading" {{ (isset($emp->hobbies) && in_array('Reading', $emp->hobbies)) ? 'checked' : '' }}>
-                      <label for="hobbies2"> Reading </label><br>
-                      <input type="checkbox" class="hobbies" id="hobbies3" name="hobbies[]" value="Working" {{ (isset($emp->hobbies) && in_array('Working', $emp->hobbies)) ? 'checked' : '' }}>
-                      <label for="hobbies3"> Working</label><br><br>
+                      <br>
+                      @foreach ($hobbies as $key=>$hobbie)
+                      <label for="hobbies2"> {{$hobbie}}  
+                      <input type="checkbox" class="hobbies" id="hobbies1" name="hobbies[]" value="{{$hobbie}}" {{ (isset($emp->hobbies) && in_array($hobbie, $emp->hobbies)) ? 'checked' : '' }}>
+                      </label><br>
                       <span class="text-danger"></span>
-
+                    @endforeach
           </div>
           <div class="my-2">
             <label for="email">User Role</label>
@@ -71,8 +68,3 @@
       </form>
     </div>
   </div>
-
-<script>
-
-
-</script>

@@ -25,7 +25,9 @@ function viewEmployee(id) {
                 email: {
                     required: true,
                     email: true,
-                    maxlength: 50
+                    maxlength: 50,
+                    remote:  baseUrl + '/validate_email'
+                    
                 },
                 gender: {
                     required: true,
@@ -54,6 +56,7 @@ function viewEmployee(id) {
                     required: "Email is required",
                     email: "Email must be a valid email address",
                     maxlength: "Email cannot be more than 50 characters",
+                    remote: "Emaill Address is already in use!",
                 },
                 gander: {
                     required: "gender is required",
@@ -109,7 +112,7 @@ $(document).ready(function() {
                     searchPlaceholder: "Search"
                 },
                 "ajax": {
-                    "url": "http://127.0.0.1:8001/getlist",
+                    "url": baseUrl + '/getlist',
                     "dataType": "json",
                     "type": "POST",
                     
@@ -177,18 +180,11 @@ $(document).on("click", '#add_employee_btn', function (event) {
         type: "POST",
         url: url,
         data: formData,
-            
         dataType: "json",
         encode: true,
     }).done(function (data) {
         if (data) {
-            $("#fname").val("");
-            $("#lname").val("");
-            $("#email").val("");
-            $("#gender").val("");
-            $("#designation").val("");
-            $("#hobbies").val("");
-            $("#user_role").val("");
+            $('#add_employee_form')[0].reset();
             model.html('');
             model.modal('hide');
             $('#DataTable').DataTable().ajax.reload();
@@ -216,7 +212,6 @@ $(document).on('click', '.delete_detail', function (event) {
                model.html('');
                 model.modal('hide');
                 $('#DataTable').DataTable().ajax.reload();
-            
                 iziToast.success({
                 timeout: 5000,
                 message: 'Record deleted successfully.'

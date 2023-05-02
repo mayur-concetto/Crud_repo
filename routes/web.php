@@ -24,3 +24,5 @@ Route::get('/index', [EmployeeController::class, 'index']);
 Route::post('/store/{id?}', [EmployeeController::class, 'store'])->name('Store');
 
 Route::delete('Delete', [EmployeeController::class, 'delete'])->name('Delete');
+
+Route::get('/validate_email', [EmployeeController::class, 'validate_email']);
