@@ -1,19 +1,19 @@
 var model = $('#common_modal');
 function viewEmployee(id) {
-    // console.log(id)
     console.log("Employee modal");
     var url = baseUrl + '/emp';
     if (id) {
+
         url = baseUrl + '/emp/' + id;
     }
     $.get(url, function (data) {
-        // console.log(data.view);
         model.html('');
         model.html(data.view);
         model.modal('show');
         model.addClass('addemp');
-    });
+    }); 
 }
+
 
 $(document).click(function (e) {
     if ($(e.target).is('#common_modal')) {            
@@ -79,6 +79,10 @@ $(document).ready(function() {
                         orderable: false
                     },
                     {
+                        "data": "user_role",
+                        orderable: false
+                    },
+                    {
                         "data": "action",
                         orderable: false
                     },
@@ -88,18 +92,30 @@ $(document).ready(function() {
 });
 
 
+
+
 $(document).on("click", '#add_employee_btn', function (event) {
-    
-    var emp_id = $(this).attr('emp_id');
-    var formData = {
-        id: $('#empID').val(),
-        fname: $("#fname").val(),
-        lname: $("#lname").val(),
-        email: $("#email").val(),
-        gender: $("#gender").val(),
-        designation: $("#designation").val(),
-        hobbies: $("#hobbies").val(),
-    };
+    event.preventDefault();
+     
+    var formData = $('#add_employee_form').serialize();
+        console.log(formData);
+       var emp_id = $(this).attr('emp_id');
+    //    var  fname = $("#fname").val();
+    //    var lname = $("#lname").val();
+    //    var email= $("#email").val();
+    //    var gender = $('input[type="radio"]:checked').val();
+    //    var designation= $("#designation").val();
+    //    var user_role= $("#user_role").val();
+      
+    //    var hobbie = [];  
+    //    $('.hobbies').each(function(){  
+    //         if($(this).is(":checked"))  
+    //         {  
+    //           hobbie.push($(this).val());  
+    //         }  
+    //    });  
+    // hobbies = hobbie.toString();
+
     var url = baseUrl + '/store';
     if ( emp_id !== 'undefined' && emp_id != '') {
         url = baseUrl + '/store/' + emp_id;
@@ -109,10 +125,10 @@ $(document).on("click", '#add_employee_btn', function (event) {
         type: "POST",
         url: url,
         data: formData,
+            
         dataType: "json",
         encode: true,
     }).done(function (data) {
-        console.log(data);
         if (data) {
             $("#fname").val("");
             $("#lname").val("");
@@ -120,11 +136,10 @@ $(document).on("click", '#add_employee_btn', function (event) {
             $("#gender").val("");
             $("#designation").val("");
             $("#hobbies").val("");
-
+            $("#user_role").val("");
             model.html('');
             model.modal('hide');
-            $('#dashboard-table').DataTable().ajax.reload();
-            //saveCircuitModal(mall_id);
+            $('#DataTable').DataTable().ajax.reload();
         } else {
             alert("something went wrong.");
         }
@@ -132,35 +147,8 @@ $(document).on("click", '#add_employee_btn', function (event) {
     });
 });
 
-//  function ADDdata(){
-//     $("#add_employee_form").submit(function(e) {
-//         e.preventDefault();
-//         const fd = new FormData(this);
-        
-//         $("#add_employee_btn").text('Adding...');
-//         $.ajax({
-//           url: 'http://127.0.0.1:8001/Store',
-//           method: 'post',
-//           data: fd,
-//           cache: false,
-//           contentType: false,
-//           processData: false,
-//           dataType: 'json',
-//           success: function(response) {
-//             if (response.status == 200) {
-//               iziToast.success({
-//                     timeout: 5000,
-//                     message: 'Record insert successfully.'
-//                 });
-//             }
-//                 model.html('');
-//                 model.modal('hide');
-//                 $('#DataTable').DataTable().ajax.reload();
-              
-//           }
-//         });
-//       });
-//  }
+
+
 
 $(document).on('click', '.delete_detail', function (event) {
     var delete_id = $(this).attr('id');

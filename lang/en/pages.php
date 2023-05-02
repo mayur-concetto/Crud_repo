@@ -13,7 +13,8 @@ return [
         "email" => "E-mail",
         "gender" => "Gender",
         "designation" => "Designation",
-        "hobbies" => "Hobbies"
+        "hobbies" => "Hobbies",
+        "user_role" => "User Role" 
 
     ],
 

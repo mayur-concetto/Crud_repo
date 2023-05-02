@@ -1,10 +1,13 @@
+<?php 
+  // /dd($emp);
+?>
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="addemp">{{ __('pages.emp.add')  }}</h5>
+        <h5 class="modal-title" id="addemp" >{{$title}}</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <form action=""  method="" id="add_employee_form" >
+      <form action=""  method="" id="add_employee_form">
         @csrf
         <input type="hidden" name="empID" id="empID">
         <div class="modal-body p-4 bg-light">
@@ -26,9 +29,14 @@
             <span class="text-danger"></span>
           </div>
           <div class="my-2">
-            <label for="gender">{{ __('pages.emp.gender')  }}</label>
-            <input type="tel" name="gender" id = "gender" class="form-control" value = "{{ $emp->gender ?? null }}" placeholder="Gender" >
-            <span class="text-danger"></span>
+
+                <label for="gender">{{ __('pages.emp.gender')  }}</label>
+                <input class="form-check-input gender" type="radio" name="gender"  id = "gender" value="male" {{ (isset($emp->gender) && $emp->gender == 'male') ? 'checked' : '' }}>
+                <label class="form-check-label" for="male">Male</label>
+                <input class="form-check-input gender" type="radio" name="gender" id = "gender" value="female" {{ (isset($emp->gender) && $emp->gender == 'female') ? 'checked' : '' }}>
+                <label class="form-check-label" for="female">Female</label>
+                <span class="text-danger"></span>
+
           </div>
           <div class="my-2">
             <label for="designation">{{ __('pages.emp.designation')  }}</label>
@@ -36,11 +44,28 @@
             <span class="text-danger"></span>
           </div>
           <div class="my-2">
-            <label for="hobbies">{{ __('pages.emp.hobbies')  }}</label>
-            <input type="text" name="hobbies" id = "hobbies" class="form-control" value = "{{ $emp->hobbies ?? null }}" placeholder="hobbies" >
+            <label for="hobbies">Hobbies:</label>
+            <br>
+                      <input type="checkbox" class="hobbies" id="hobbies1" name="hobbies[]" value="Cricket" {{ (isset($emp->hobbies) && in_array('Cricket', $emp->hobbies)) ? 'checked' : '' }}>
+                      <label for="hobbies1"> Cricket</label><br>
+                      <input type="checkbox" class="hobbies" id="hobbies2" name="hobbies[]" value="Reading" {{ (isset($emp->hobbies) && in_array('Reading', $emp->hobbies)) ? 'checked' : '' }}>
+                      <label for="hobbies2"> Reading </label><br>
+                      <input type="checkbox" class="hobbies" id="hobbies3" name="hobbies[]" value="Working" {{ (isset($emp->hobbies) && in_array('Working', $emp->hobbies)) ? 'checked' : '' }}>
+                      <label for="hobbies3"> Working</label><br><br>
+                      <span class="text-danger"></span>
+
+          </div>
+          <div class="my-2">
+            <label for="email">User Role</label>
+            <select name="user_role" id="user_role" class="form-control user_role">
+                        <option value="" >--Select--</option>
+                        <option value="Admin" {{ (isset($emp->user_role) && $emp->user_role == 'Admin') ? 'selected' : '' }}>Admin</option>
+                        <option value="Customer" {{ (isset($emp->user_role) && $emp->user_role == 'Customer') ? 'selected' : '' }}>Customer</option>
+            </select>
             <span class="text-danger"></span>
           </div>
         </div>
+        
         <div class="modal-footer">
           <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
           <button type="submit" id="add_employee_btn"  emp_id="{{ $id }}"  class="btn btn-primary">Add Employee</button>
@@ -76,7 +101,9 @@ $(document).ready(function() {
             },
             hobbies:{
               required: true,
-              maxlength: 20,
+            },
+            user_role:{
+              required: true,
             }
         },
         messages: {
@@ -93,16 +120,18 @@ $(document).ready(function() {
                 email: "Email must be a valid email address",
                 maxlength: "Email cannot be more than 50 characters",
             },
-            gender: {
-                required: "gender  is required",
+            gander: {
+                required: "gender is required",
             },
             designation: {
                 required: "designation is required",
                 maxlength: "designation cannot be more than 20 characters"
             },
             hobbies: {
-                required: "avatar is required",
-                maxlength: "designation cannot be more than 20 characters"
+                required: "hobbies is required",
+            },
+            user_role: {
+                required: "Please select User role",
             },
 
         }

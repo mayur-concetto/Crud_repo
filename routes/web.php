@@ -23,6 +23,4 @@ Route::get('/index', [EmployeeController::class, 'index']);
 
 Route::post('/store/{id?}', [EmployeeController::class, 'store'])->name('Store');
 
-// Route::post('/delete/{id?}', [EmployeeController::class, 'delete']);
-
 Route::delete('Delete', [EmployeeController::class, 'delete'])->name('Delete');

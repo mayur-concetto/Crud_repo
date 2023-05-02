@@ -18,6 +18,12 @@ class Employee extends Model
         'email',
         'gender',
         'designation',
-        'hobbies'
+        'hobbies',
+        'user_role'
+    ];
+ 
+    protected $casts = [
+        'hobbies' =>'array',
+        'gender'=>'string'
     ];
 }

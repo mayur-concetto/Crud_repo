@@ -24,6 +24,7 @@
                         <th>{{ __('pages.emp.gender')  }}</th>
                         <th>{{ __('pages.emp.designation')  }}</th>
                         <th>{{ __('pages.emp.hobbies')  }}</th>
+                        <th>{{ __('pages.emp.user_role')  }}</th>
                         <th width="280px">Action</th>
                     </tr>
                     </thead>

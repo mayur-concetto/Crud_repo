@@ -25,27 +25,22 @@ class EmployeeController extends Controller
             $orderVal = isset($columns[$request->input('order.1.column')]) ? $columns[$request->input('order.1.column')] : null;
             $direction = $request->input('order.1.dir');
             $sarchVal = !empty($request->input('search.value')) ? $request->input('search.value') : null;
-			// echo $sarchVal;die;
 			$limit = $request->input('length');
             $start = $request->input('start');
 
             $getData = Employee::latest()->get();
-			// echo "<pre>";print_r($getData);die;
-            if (!empty($orderVal)) {
+			if (!empty($orderVal)) {
                 $getData = $getData->orderBy($orderVal, $direction);
             }
             $totalaData = $getData->count();
 			if (!empty($sarchVal)) {
-				// echo "hello";die;
-                $getData = $getData->where(function ($q) use ($sarchVal) {
+				$getData = $getData->where(function ($q) use ($sarchVal) {
 					$q->where("first_name", 'LIKE', "%$sarchVal%");
 					
 				});
             }
             $totalaFilterData = $getData->count();
-			// print_r($totalaFilterData);die;
-			// $getData = $getData->offset($start)->limit($limit)->get();
-            $pdata = [];
+			$pdata = [];
             $i = 1;
             if (count($getData)) {
                 foreach ($getData as $pkey => $pval) {
@@ -59,9 +54,10 @@ class EmployeeController extends Controller
 					$data['gender'] = $pval->gender;
 					$data['designation'] = $pval->designation;
 					$data['hobbies'] = $pval->hobbies;
+                    $data['user_role'] = $pval->user_role;
 			
                     $action .= '<a href="javascript:void(0);" data-bs-toggle="modal" onclick="viewEmployee(' . $pval->id . ')"
-                            class="btn btn-success action-btn btn-sm" data-bs-toggle="tooltip" data-bs-placement="top"
+                            class="btn btn-success action-btn btn-sm" id = "update" data-bs-toggle="tooltip" data-bs-placement="top"
                             title="Edit"><i class="icon-edit"></i>EDIT</a>';
 
                     $action .= '<a href="javascript:void(0);" class="btn btn-danger  delete_detail" data-bs-toggle="modal" id="' . $pval->id . '"  data-bs-toggle="tooltip" data-bs-placement="top"
@@ -70,7 +66,6 @@ class EmployeeController extends Controller
                     $data['action'] = $action;
                     $pdata[] = $data;
                 }
-				// echo "<pre>";print_r($pdata);die;
             }
             $jsonData = array(
                 "draw" => intval($request->input('draw')),
@@ -84,7 +79,6 @@ class EmployeeController extends Controller
             Log::info('Exception emp list');
             Log::error($ex);
             $response['status'] = false;
-            // $response['message'] = __('admin_message.admin_exception_message');
             return response()->json($response);
         }
 		
@@ -93,18 +87,15 @@ class EmployeeController extends Controller
 
 	public function load($id = null)
 	{
-		// echo "hello";die;
 		$title = __('ADD Employee');
         $emp = null;
-		// echo $id;die;
         if (!empty($id)) {
             $title = __('EDIT Employee');
             $emp = Employee::find($id);
-			
 		}
-		
-        $view = view('empModel', compact('emp', 'id'))->render();
+        $view = view('empModel', compact('emp', 'id','title'))->render();
         $response['emp'] = $emp;
+        // dd($response['emp']);
         $response['view'] = $view;
 		return response()->json($response);
 	}
@@ -112,12 +103,13 @@ class EmployeeController extends Controller
 	public function store(Request $request, $id = null)
     {
 		$request->validate([    
-			'fname' => 'required',
-			'lname' => 'required',
+			'fname' => 'required|max:255',
+			'lname' => 'required|max:255',
 			'email' => 'required|email',
 			'gender' => 'required',
-			'designation' => 'required',
+			'designation' => 'required|max:255',
 			'hobbies' => 'required',
+            'user_role' => 'required|in:Admin,Customer',
             ]);
 		
 		$response = false;
@@ -128,9 +120,23 @@ class EmployeeController extends Controller
 			'gender' => $request->gender,
 			'designation' => $request->designation,
 			'hobbies' => $request->hobbies,
+            'user_role' => $request->user_role,
         ];
-        $save = Employee::updateOrCreate(['id' => $id], $data);
-        // return response()->json([$save,'status' => 200,]);
+        // dd($data);die;
+        if($id!=""){
+            $employee = Employee::find($id);
+        }else{
+            $employee = new  Employee();
+        }
+        // \DB::enableQueryLog();
+        $employee->first_name  = $request->fname;
+        $employee->last_name  = $request->lname;
+        $employee->email  = $request->email;
+        $employee->gender  = (string)$request->gender;
+        $employee->designation  = $request->designation;
+        $employee->hobbies  = ($request->hobbies);
+        $employee->user_role  = $request->user_role;
+        $save = $employee->save();
 		if ($save) {
             $response = true;
         }
@@ -144,7 +150,6 @@ class EmployeeController extends Controller
         if (!empty($id)) {
                	$delete = Employee::where('id', $id)->delete();
             }
-
         return $delete;
     }
 }

@@ -15,13 +15,8 @@
          font-size: 14px;
     }
 </style>
-    <!-- General CSS Files -->
-    <!--   <link rel="stylesheet" href="{{ asset('admin/css/bootstrap.min.css') }}">
-    <link href="{{ asset('css/iziToast.css') }}" rel="stylesheet"> -->
-
-    <!-- CSS Libraries -->
+   
     @yield('css')
-    <!-- Template CSS -->
     
     <link rel="stylesheet" href="{{ asset('css/bootstrap.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/jquery.dataTables.min.css') }}">
@@ -44,8 +39,6 @@
     <script src="{{ asset('js/dataTables.responsive.min.js') }}"></script>
     <script src="{{ asset('js/responsive.bootstrap5.min.js') }}"></script>
     <script src="{{ asset('js/bootstrap.bundle.min.js') }}"></script>
-    
-    <!-- <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script> -->
     <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/jquery.validate.min.js"></script>
     <script src="{{ asset('js/iziToast.js') }}"></script>
 
