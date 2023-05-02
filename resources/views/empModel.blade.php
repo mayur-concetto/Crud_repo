@@ -1,6 +1,4 @@
-<?php 
-  // /dd($emp);
-?>
+
 <div class="modal-dialog modal-dialog-centered">
     <div class="modal-content">
       <div class="modal-header">
@@ -75,68 +73,6 @@
   </div>
 
 <script>
-$(document).ready(function() {
-  
-    $("#add_employee_form").validate({
-        rules: {
-            fname: {
-                required: true,
-                maxlength: 20,
-            },
-            lname:{
-                required: true,
-                maxlength: 20,
-            },
-            email: {
-                required: true,
-                email: true,
-                maxlength: 50
-            },
-            gender: {
-                required: true,
-            },
-            designation:{
-                required: true,
-                maxlength: 20,
-            },
-            hobbies:{
-              required: true,
-            },
-            user_role:{
-              required: true,
-            }
-        },
-        messages: {
-            fname: {
-                required: "First name is required",
-                maxlength: "First name cannot be more than 20 characters"
-            },
-            lname: {
-                required: "Last name is required",
-                maxlength: "Last name cannot be more than 20 characters"
-            },
-            email: {
-                required: "Email is required",
-                email: "Email must be a valid email address",
-                maxlength: "Email cannot be more than 50 characters",
-            },
-            gander: {
-                required: "gender is required",
-            },
-            designation: {
-                required: "designation is required",
-                maxlength: "designation cannot be more than 20 characters"
-            },
-            hobbies: {
-                required: "hobbies is required",
-            },
-            user_role: {
-                required: "Please select User role",
-            },
-
-        }
-    });
-});
 
 
 </script>

@@ -1,5 +1,6 @@
 var model = $('#common_modal');
 function viewEmployee(id) {
+    
     console.log("Employee modal");
     var url = baseUrl + '/emp';
     if (id) {
@@ -11,7 +12,67 @@ function viewEmployee(id) {
         model.html(data.view);
         model.modal('show');
         model.addClass('addemp');
+        $("#add_employee_form").validate({
+            rules: {
+                fname: {
+                    required: true,
+                    maxlength: 20,
+                },
+                lname:{
+                    required: true,
+                    maxlength: 20,
+                },
+                email: {
+                    required: true,
+                    email: true,
+                    maxlength: 50
+                },
+                gender: {
+                    required: true,
+                },
+                designation:{
+                    required: true,
+                    maxlength: 20,
+                },
+                'hobbies[]':{
+                    required: true,
+                },
+                user_role:{
+                    required: true,
+                }
+            },
+            messages: {
+                fname: {
+                    required: "First name is required",
+                    maxlength: "First name cannot be more than 20 characters"
+                },
+                lname: {
+                    required: "Last name is required",
+                    maxlength: "Last name cannot be more than 20 characters"
+                },
+                email: {
+                    required: "Email is required",
+                    email: "Email must be a valid email address",
+                    maxlength: "Email cannot be more than 50 characters",
+                },
+                gander: {
+                    required: "gender is required",
+                },
+                designation: {
+                    required: "designation is required",
+                    maxlength: "designation cannot be more than 20 characters"
+                },
+                'hobbies[]': {
+                    required: "hobbies is required",
+                },
+                user_role: {
+                    required: "Please select User role",
+                },
+        
+            }
+        }); 
     }); 
+    
 }
 
 
@@ -21,12 +82,14 @@ $(document).click(function (e) {
     }
 
 });
+
 $(function () {
      
     $.ajaxSetup({
         headers: {
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         }
+        
   });
 
 $(document).ready(function() {
@@ -95,26 +158,15 @@ $(document).ready(function() {
 
 
 $(document).on("click", '#add_employee_btn', function (event) {
+    // validation();
+    if(!$('#add_employee_form').valid()){
+        return false;
+    }
     event.preventDefault();
      
     var formData = $('#add_employee_form').serialize();
-        console.log(formData);
-       var emp_id = $(this).attr('emp_id');
-    //    var  fname = $("#fname").val();
-    //    var lname = $("#lname").val();
-    //    var email= $("#email").val();
-    //    var gender = $('input[type="radio"]:checked').val();
-    //    var designation= $("#designation").val();
-    //    var user_role= $("#user_role").val();
-      
-    //    var hobbie = [];  
-    //    $('.hobbies').each(function(){  
-    //         if($(this).is(":checked"))  
-    //         {  
-    //           hobbie.push($(this).val());  
-    //         }  
-    //    });  
-    // hobbies = hobbie.toString();
+        // console.log(formData);
+    var emp_id = $(this).attr('emp_id');
 
     var url = baseUrl + '/store';
     if ( emp_id !== 'undefined' && emp_id != '') {
